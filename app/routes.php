@@ -46,7 +46,7 @@ Route::post('contact', function(){
 
 	Mail::send('emails.contactemail', $emailcontent, function($message)
 	{
-		$message->to('yli@matchcode.com', 'Learning Laravel Support')
+		$message->to('lifengtest@gmail.com')
 			->subject('Contact via Our Contact Form');
 	});
 
