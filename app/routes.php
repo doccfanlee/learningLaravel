@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home');
-});
+Route::get('/', 'TasksController@home');
+Route::get('/create', 'TasksController@create');
+Route::get('/edit', 'TasksController@edit');
+Route::get('/delete', 'TasksController@delete');
 
 Route::get('/about', function()
 {
