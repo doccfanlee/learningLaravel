@@ -41,6 +41,10 @@
 			<td>{{ $task->title }}</td>
 			<td>{{ $task->body}}</td>
 			<td>{{ $task->done ? 'Yes' : 'No'}}</td>
+			<td>
+			<a href="{{ action('TasksController@edit', $task->id) }}" class="btn btn-info">Edit</a>
+			<a href="{{ action('TasksController@delete', $task->id) }}" class="btn btn-info">Delete</a>
+			</td>
 		</tr>
 	@endforeach
 	</tbody>

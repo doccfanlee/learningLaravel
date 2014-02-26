@@ -11,10 +11,13 @@
 |
 */
 
+Route::model('task', 'Task');
 Route::get('/', 'TasksController@home');
 Route::get('/create', 'TasksController@create');
-Route::get('/edit', 'TasksController@edit');
+Route::get('/edit/{task}', 'TasksController@edit');
 Route::get('/delete', 'TasksController@delete');
+Route::post('/create', 'TasksController@saveCreate');
+Route::post('/edit', 'TasksController@doEdit');
 
 Route::get('/about', function()
 {
