@@ -28,9 +28,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/">Home</a></li>
-        <li><a href="/create">Create</a></li>
-        <li><a href="/contact">Contact</a></li>
+	<li><?php echo link_to('/', $title='Home'); ?></li>
+	<li>{{ link_to('/create', $title='Create') }}</li>
+	<li>{{ link_to('/contact', $title='contact') }}</li>
       </ul>
     </div><!-- /.navbar-collapse -->
 </nav>
@@ -47,9 +47,9 @@
 
 			<div class="col-md-10">
 				<ul class="bottom-links">
-					<li><a href="/">Home</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/contact">Contact</a></li>
+					<li><?php echo link_to('/', $title='Home'); ?></li>
+					<li>{{ link_to('/create', $title='Create') }}</li>
+					<li>{{ link_to('/contact', $title='contact') }}</li>
 				</ul>
 			</div>
 

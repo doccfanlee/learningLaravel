@@ -15,7 +15,8 @@ Route::model('task', 'Task');
 Route::get('/', 'TasksController@home');
 Route::get('/create', 'TasksController@create');
 Route::get('/edit/{task}', 'TasksController@edit');
-Route::get('/delete', 'TasksController@delete');
+Route::get('/delete/{task}', 'TasksController@delete');
+Route::post('/delete', 'TasksController@doDelete');
 Route::post('/create', 'TasksController@saveCreate');
 Route::post('/edit', 'TasksController@doEdit');
 
@@ -55,3 +56,5 @@ Route::post('contact', function(){
 
 	return 'Your message has been sent';
 });
+
+Route::get('task/{id}', 'TasksController@show')->where('id', '\d+');

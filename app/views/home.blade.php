@@ -38,7 +38,7 @@
 	@foreach($tasks as $task)
 		<tr>
 			<td>{{ $task->id }} </td>
-			<td>{{ $task->title }}</td>
+			<td><a href="{{ action('TasksController@show', $task->id) }}">{{ $task->title }}</a></td>
 			<td>{{ $task->body}}</td>
 			<td>{{ $task->done ? 'Yes' : 'No'}}</td>
 			<td>

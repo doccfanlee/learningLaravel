@@ -18,21 +18,32 @@ class TasksController extends BaseController
 		return View::make('edit', compact('task'));
 	}
 	
-	public function delete()
+	public function delete(Task $task)
 	{
-		return View::make('delete');
+		return View::make('delete', compact('task'));
 	}
 
 	public function saveCreate()
 	{
 		$input = Input::all();
 
-		$task = new Task;
-		$task->title = $input['title'];
-		$task->body = $input['body'];
-		$task->save();
+		$rules = array(
+			'title'=> 'required',
+			'body'=> 'required'
+		);
 
-		return Redirect::action('TasksController@home');
+		$validator = Validator::make($input, $rules);
+
+		if($validator->passes()) {
+			$task = new Task;
+			$task->title = $input['title'];
+			$task->body = $input['body'];
+			$task->save();
+
+			return Redirect::action('TasksController@home');
+		}
+
+		return Redirect::action('TasksController@create');
 	}
 
 	public function doEdit()
@@ -44,5 +55,21 @@ class TasksController extends BaseController
 		$task->save();
 
 		return Redirect::action('TasksController@home');
+	}
+
+	public function doDelete()
+	{
+		$task = Task::findOrFail(Input::get('id'));
+		$task->delete();
+
+		return Redirect::action('TasksController@home');
+	}
+
+	public function show($id)
+	{
+		$task = Task::find($id);
+
+		return View::make('task', compact('task'));
+
 	}
 }
